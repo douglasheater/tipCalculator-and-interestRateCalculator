@@ -1,0 +1,38 @@
+package interestRateCalculator;
+
+import java.util.Scanner;
+import java.util.Locale;
+import java.text.NumberFormat;
+
+public class interestRateCalculatorPart1 {
+
+	public static void main(String[] args) 
+	{
+		System.out.println("Welcome to the Interest Calculator");
+		char keepGoing = 'y';
+		Scanner input = new Scanner(System.in);
+		while (keepGoing != 'n' && keepGoing != 'N')
+		{
+			System.out.print("\nEnter loan amount: ");
+			int loanAmount = input.nextInt();
+			System.out.print("Enter interest rate: ");
+			double interestRate = input.nextDouble();
+			
+			Locale usa = new Locale("en", "US");
+			double interestAmount = interestRate/100.0 * loanAmount;
+			NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(usa);
+		
+			System.out.println("\nLoan amount:\t\t " + dollarFormat.format(loanAmount));
+			System.out.println("Interest rate:\t\t " + interestRate + "%");
+			System.out.println("Interest:\t\t " + dollarFormat.format(interestAmount));
+			
+			System.out.print("\nContinue? (y/n): ");
+			keepGoing = input.next().charAt(0);
+			
+		}
+		
+		input.close();
+		System.out.println("\nBye!!");
+	}
+
+}
